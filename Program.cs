@@ -4,7 +4,11 @@
     {
         public static int Main()
         {
-            CustomerAccount newAccount = new CustomerAccount("Oleg", 100);
+            CustomerAccount firstAccount = new CustomerAccount("Oleg", 100);
+            firstAccount.SaveAccount("oleg");
+
+            CustomerAccount secondAccount = Account.LoadAccount("oleg") as CustomerAccount;
+            Console.WriteLine(secondAccount.GetName()); 
 
             return 0;
         }
@@ -13,8 +17,8 @@
     public interface IAccount
     {
         bool SetName(string name);
+        string GetName();
         bool SaveAccount(string filename);
-        Account LoadAccount(string filename);
     }
 
     public abstract class Account : IAccount
@@ -40,36 +44,13 @@
             }
         }
 
-        public abstract bool SaveAccount(string filename);
-        public abstract Account LoadAccount(string filename);
-
-   }
-
-    public class CustomerAccount : Account
-    {
-        public CustomerAccount(string inName, decimal inBalance) : base(inName, inBalance)
+        public string GetName()
         {
-            
-        } 
-
-        public override bool SaveAccount(string filename)
-        {
-            try
-            {
-                StreamWriter streamWriter = new StreamWriter(filename);
-                streamWriter.WriteLine(name);
-                streamWriter.WriteLine(balance);
-                streamWriter.Close();
-            }
-            catch
-            {
-                return false;
-            }
-
-            return true;
+            return name; 
         }
 
-        public override Account LoadAccount(string filename)
+        public abstract bool SaveAccount(string filename);
+        public static Account LoadAccount(string filename)
         {
             StreamReader streamReader = null;
             Account result = null;
@@ -98,5 +79,31 @@
             }
             return result;
         }
+   }
+
+    public class CustomerAccount : Account
+    {
+        public CustomerAccount(string inName, decimal inBalance) : base(inName, inBalance)
+        {
+            
+        } 
+
+        public override bool SaveAccount(string filename)
+        {
+            try
+            {
+                StreamWriter streamWriter = new StreamWriter(filename);
+                streamWriter.WriteLine(name);
+                streamWriter.WriteLine(balance);
+                streamWriter.Close();
+            }
+            catch
+            {
+                return false;
+            }
+
+            return true;
+        }
+
     }
 }
