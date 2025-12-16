@@ -1,0 +1,14 @@
+C:\Users\finnf\Desktop\ConsoleApplication\obj\Debug\net9.0\ConsoleApplication.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\finnf\Desktop\ConsoleApplication\obj\Debug\net9.0\ConsoleApplication.AssemblyInfoInputs.cache
+C:\Users\finnf\Desktop\ConsoleApplication\obj\Debug\net9.0\ConsoleApplication.AssemblyInfo.cs
+C:\Users\finnf\Desktop\ConsoleApplication\obj\Debug\net9.0\ConsoleApplication.csproj.CoreCompileInputs.cache
+C:\Users\finnf\Desktop\ConsoleApplication\bin\Debug\net9.0\ConsoleApplication.exe
+C:\Users\finnf\Desktop\ConsoleApplication\bin\Debug\net9.0\ConsoleApplication.deps.json
+C:\Users\finnf\Desktop\ConsoleApplication\bin\Debug\net9.0\ConsoleApplication.runtimeconfig.json
+C:\Users\finnf\Desktop\ConsoleApplication\bin\Debug\net9.0\ConsoleApplication.dll
+C:\Users\finnf\Desktop\ConsoleApplication\bin\Debug\net9.0\ConsoleApplication.pdb
+C:\Users\finnf\Desktop\ConsoleApplication\obj\Debug\net9.0\ConsoleApplication.dll
+C:\Users\finnf\Desktop\ConsoleApplication\obj\Debug\net9.0\refint\ConsoleApplication.dll
+C:\Users\finnf\Desktop\ConsoleApplication\obj\Debug\net9.0\ConsoleApplication.pdb
+C:\Users\finnf\Desktop\ConsoleApplication\obj\Debug\net9.0\ConsoleApplication.genruntimeconfig.cache
+C:\Users\finnf\Desktop\ConsoleApplication\obj\Debug\net9.0\ref\ConsoleApplication.dll
