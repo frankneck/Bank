@@ -8,7 +8,16 @@
             firstAccount.SaveAccount("oleg");
 
             CustomerAccount secondAccount = Account.LoadAccount("oleg") as CustomerAccount;
+
+            if (secondAccount != null) secondAccount.SetName("grisha");
+
+            secondAccount.SaveAccount("oleg");
             Console.WriteLine(secondAccount.GetName()); 
+
+            DictionaryBank bank = new DictionaryBank();
+
+            bank.SaveBankAccounts("Save.txt");
+
 
             return 0;
         }
@@ -88,22 +97,68 @@
             
         } 
 
+        public void Save(TextWriter textOut)
+        {
+            textOut.WriteLine(name);
+            textOut.WriteLine(balance);
+        }
+
         public override bool SaveAccount(string filename)
         {
+            // text writer instead stram 
+            TextWriter textOut = null;
             try
             {
-                StreamWriter streamWriter = new StreamWriter(filename);
-                streamWriter.WriteLine(name);
-                streamWriter.WriteLine(balance);
-                streamWriter.Close();
+                textOut = new StreamWriter(filename);
+                Save(textOut);
             }
             catch
             {
                 return false;
             }
+            finally
+            {
+                if (textOut != null) textOut.Close();
+            }
 
             return true;
         }
 
+    }
+
+    public class DictionaryBank
+    {
+        Dictionary<string, IAccount> accountDictionary = new Dictionary<string, IAccount>();
+
+        public IAccount FindAccount(string key)
+        {
+            if (accountDictionary.ContainsKey(key)) 
+                return accountDictionary[key];
+            else
+            {
+                return null;
+            }
+        }
+
+        public bool StoreAccount(IAccount account)
+        {
+            if (accountDictionary.ContainsKey(account.GetName()))
+                return false;
+            else
+            {
+                accountDictionary.Add(account.GetName(), account);;
+                return true;
+            }
+        }
+
+        public void SaveBankAccounts(TextWriter textOut)
+        {
+           textOut.WriteLine(accountDictionary.Count());
+
+           foreach (CustomerAccount accountRecord in accountDictionary.Values)
+           {
+               if (accountRecord != null) accountRecord.Save(textOut);                
+           } 
+        }
     }
 }
